@@ -273,7 +273,7 @@ impl Speaker {
                 0,
                 bindings::espeakCHARS_UTF8,
                 std::ptr::null_mut(),
-                (&user_data.map(|ud| ud as *const _) as *const _) as *mut std::ffi::c_void,
+                (&user_data as *const _) as *mut std::ffi::c_void,
             )
         })?;
 
