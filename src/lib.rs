@@ -267,13 +267,13 @@ impl Speaker {
         handle_error(unsafe {
             bindings::espeak_ng_Synthesize(
                 text_nul_term.as_ptr().cast::<std::ffi::c_void>(),
-                text_nul_term.len() as u64,
+                text_nul_term.len(),
                 0,
                 bindings::espeak_POSITION_TYPE_POS_CHARACTER,
                 0,
                 bindings::espeakCHARS_UTF8,
                 std::ptr::null_mut(),
-                (&user_data as *const _) as *mut std::ffi::c_void,
+                std::ptr::addr_of!(user_data) as *mut std::ffi::c_void,
             )
         })?;
 
